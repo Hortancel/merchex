@@ -58,6 +58,7 @@ def contact(request):
     return redirect('email-sent')
 
 
+
 def band_detail(request,id):
     band = Band.objects.get(id=id)
     return render(request,'listings/band_detail.html',{'band':band})

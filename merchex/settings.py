@@ -22,12 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3p1qm4(#*baf31lutlf$4-d$8!8@ay$*n474b=uroupbw&-hn3'
+SECRET_KEY = os.environ.get(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG")=="True"
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+              "127.0.0.1",
+              "localhost",
+              ".onrender.com",
+                 ]
 
 
 # Application definition
@@ -127,3 +131,4 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
+STATIC_STORAGE ='whtenoise.storage.CompressedManifestStaticFileStorage'
